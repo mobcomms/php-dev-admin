@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 $uri = $_SERVER['HTTP_REFERER']; // 현재 URL 경로 가져오기
 $parts = explode("/", $uri); // '/' 기준으로 분리
 $company_code = $parts[3]; // `hana` 부분 추출
-
+global $company_code;
 include $company_code."/var.php";
 include __fn__;
 

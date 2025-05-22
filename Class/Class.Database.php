@@ -4,12 +4,21 @@
 	Original code derived from "Run your own PDO PHP class" by Philip Brown
 	Last Modified 2/27/2017
 	*/
+if(empty($company_code)){
+    $uri = $_SERVER['SCRIPT_NAME']; // 현재 URL 경로 가져오기
+    $parts = explode("/", $uri); // '/' 기준으로 분리
+    $company_code = $parts[1]; // `hana` 부분 추출
+}else{
+    $uri = $_SERVER['HTTP_REFERER']; // 현재 URL 경로 가져오기
+    $parts = explode("/", $uri); // '/' 기준으로 분리
+    $company_code = $parts[3]; // `hana` 부분 추출
+}
 
 	// Define database configuration
 	define("DB_HOST", $settings['ckd_db_host']);
 	define("DB_USER", $settings['ckd_db_user']);
 	define("DB_PASS", $settings['ckd_db_pass']);
-    define("DB_NAME", $settings['ckd_db_name']);
+    define("DB_NAME", $company_code);
 
 	class Database{
 		private $host      = DB_HOST;
