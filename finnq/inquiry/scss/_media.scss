@@ -1,0 +1,47 @@
+//태블릿 (~ 1400px)
+@include tablet {
+  .index_container {
+    .info_tabs {
+      .wrap_txtthumb {
+        max-width: 70%;
+        min-width: 156px;
+      }
+    }
+  }
+}
+
+//모바일 (~ 420px)
+@include mobile {
+  .index_container {
+    .info_tabs {
+      .wrap_txtthumb {
+        max-width: 156px;
+      }
+    }
+  }
+}
+
+//모바일2 (G.fold)
+@include mobile2 {
+  .index_wrap {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    .index_container {
+      min-width: 280px;
+    }
+  }
+
+  .index_container {
+    .info_tabs {
+      #first-dynamic-table {
+        .content_title {
+          p {
+            font-size: 14.5px;
+            letter-spacing: -1px;
+          }
+        }
+      }
+    }
+  }
+}
