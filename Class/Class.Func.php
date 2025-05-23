@@ -138,7 +138,16 @@ class __fn__
 	public function chk_admin($sess, $admin)
 	{
 		if (empty($_SESSION[$admin]['idx']) || empty($_SESSION[$admin]['id'])) {
-			exit($this->loca("/hana/login.php", "로그인 정보가 없습니다.\\n\\n다시 로그인 해 주세요"));
+            if(empty($company_code)){
+                $uri = $_SERVER['SCRIPT_NAME']; // 현재 URL 경로 가져오기
+                $parts = explode("/", $uri); // '/' 기준으로 분리
+                $company_code = $parts[1]; // `hana` 부분 추출
+            }else{
+                $uri = $_SERVER['HTTP_REFERER']; // 현재 URL 경로 가져오기
+                $parts = explode("/", $uri); // '/' 기준으로 분리
+                $company_code = $parts[3]; // `hana` 부분 추출
+            }
+			exit($this->loca("/{$company_code}/login.php", "로그인 정보가 없습니다.\\n\\n다시 로그인 해 주세요"));
 		}else{
 			return $_SESSION[$admin];
 		}

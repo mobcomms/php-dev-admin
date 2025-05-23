@@ -13,6 +13,16 @@ Class NDO extends PDO
 
 	function &_NDO(array $config)
 	{
+        $uri = @$_SERVER['HTTP_REFERER']; // 현재 URL 경로 가져오기
+        if(empty($uri)){
+            $uri = $_SERVER['SCRIPT_NAME']; // 현재 URL 경로 가져오기
+            $parts = explode("/", $uri); // '/' 기준으로 분리
+            $config['ckd_db_name'] = $parts[1]; // `hana` 부분 추출
+        }else{
+            $parts = explode("/", $uri); // '/' 기준으로 분리
+            $config['ckd_db_name'] = $parts[3]; // `hana` 부분 추출
+        }
+        //pre($config);
 		$this->_config = $config;
 		return $this->_config;
 	}
