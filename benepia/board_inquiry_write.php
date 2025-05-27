@@ -26,8 +26,6 @@ if($target=="game"){
 }
 $actTitle=($seq)?"수정":"등록";
 
-include __head__; ## html 헤더 출력
-
 ## 등록 및 수정
 if(!empty($_POST)){
 	$method = empty($_POST['method'])?"":$_POST['method'];
@@ -92,6 +90,7 @@ $sql="
 $result_user= $NDO->getData($sql);
 $user_cnt = $result_user['cnt'];
 
+include __head__; ## html 헤더 출력
 ?>
 <div class="contentpanel">
 

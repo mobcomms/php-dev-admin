@@ -27,7 +27,6 @@ switch($target){
 	default : define('_subMenu_', 'inquiry');
 }
 
-include __head__; ## html 헤더 출력
 $actTitle=($seq)?"수정":"등록";
 
 ## 등록 및 수정
@@ -120,6 +119,7 @@ if($result['user_app_os'] =="A"){
 	}
 }
 
+include __head__; ## html 헤더 출력
 ?>
 <div class="contentpanel">
 
