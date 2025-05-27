@@ -1,0 +1,115 @@
+/* layout_css */
+
+/* member */
+
+.call {
+	padding-top: 0px;
+	width: 144px;
+	text-align: center;
+	height: 32px;
+	float:left;
+}
+
+.space-in{
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-top: 8px;
+}
+
+.radio_check, .radio, .checkbox{
+	float:left;
+}
+.radio, .checkbox{
+	margin-left: 5px;
+}
+
+.f_raido{
+	margin-left:26px;
+	margin-right:22px;
+}
+
+.f_check{
+	margin-left:10px;
+}
+
+.databox{
+	padding: 7px;
+}
+
+.btn{
+	margin-left:10px;
+}
+
+.member_table{
+	margin-top:30px;
+	text-align: center;
+}
+
+.member_table thead > tr > th{
+	background-color: #ddd;
+	font-weight:bold;
+}
+
+.m_pager{
+	text-align:center;
+}
+
+.member_table thead tr > th, .member_table thead tr > td, .member_table tbody tr > th, .member_table tbody tr > td, .member_table tfoot tr > th, .member_table tfoot tr > td {
+    border: 1px solid #CCC5B9;
+	text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+	WORD-BREAK:break-all;
+}
+
+
+.member_table2{
+	margin-top:5px;
+	text-align: center;
+}
+
+.member_table2 thead > tr > th{
+	background-color: #ddd;
+	font-weight:bold;
+}
+
+.member_table2 thead tr > th, .member_table2 thead tr > td, .member_table2 tbody tr > th, .member_table2 tbody tr > td, .member_table2 tfoot tr > th, .member_table2 tfoot tr > td {
+    border: 1px solid #CCC5B9;
+	text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+	WORD-BREAK:break-all;
+}
+
+
+
+.event_table thead tr > th, .event_table thead tr > td, .event_table tbody tr > th, .event_table tbody tr > td, .event_table tfoot tr > th, .event_table tfoot tr > td {
+	text-align: center;
+	vertical-align: 50%;
+	WORD-BREAK:break-all;
+}
+
+
+/* member end */
+
+/*board*/
+
+.toggle-toggle {
+	padding-left:25%;
+}
+
+.hide {display:none;}
+.item td {cursor:pointer;}
+.show_tb {display:table-row;}
+
+/*board end*/
+
+/*event-push*/
+.img-box img {width:50%; height:auto;}
+/*event-push*/
+
+
+/*contextMenu*/
+.member-id {cursor:pointer; color:#5995c8; }
+.contextMenu-sms {border-top:1px solid #ddd;}
+.info-p{line-height:2.5px;}
