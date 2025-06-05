@@ -1,0 +1,90 @@
+// Breakpoints
+$breakpoint-tablet: 1400px;
+$breakpoint-mobile: 420px;
+$breakpoint-mobile2: 360px;
+
+/********** common  **********/
+$mainFontRegular: "SpoqaHanSansNeoR";
+$mainFontBold: "SpoqaHanSansNeoB";
+$mainFontMedium: "SpoqaHanSansNeoM";
+
+$mainRedColor: #ea3353;
+$mainGradiant: linear-gradient(90deg, #e7535b 0%, #de6c3f 100%);
+$mainFontColor: #333;
+$mainFontBoldColor: #000;
+$mainFontGrayColor: #666;
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin mobile2 {
+  @media (max-width: #{$breakpoint-mobile2}) {
+    @content;
+  }
+}
+
+@mixin clearBoth {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+@mixin Txthide {
+  text-indent: -9999px;
+  font-size: 0px;
+}
+
+@mixin point_box {
+  background: linear-gradient(90deg, #e7535b 0%, #de6c3f 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.09);
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  padding: 8px;
+
+  p {
+    color: #d47414;
+    background: linear-gradient(144.21deg, #fbd54d 41.38%, #e8c54c 88.57%);
+    box-shadow: 0px 1.14286px 1.14286px rgba(0, 0, 0, 0.08);
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+  }
+  .box_point {
+    font-size: 12px;
+    color: #fff;
+    font-family: $mainFontBold;
+    margin-left: 4px;
+  }
+}
+
+@mixin common_btn {
+  background: #eeeeee;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 341px;
+  height: 60px;
+  border-radius: 16px;
+
+  &.on {
+    background: $mainGradiant;
+  }
+}
