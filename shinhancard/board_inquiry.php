@@ -65,7 +65,6 @@ if(empty($target)) {
     $subQry .= " AND title != 'game'";
 }else if(!empty($target)){
     $subQry .= " AND title = '{$target}'";
-}else{
 	$param .= "&target=game";
 }
 $sql="
