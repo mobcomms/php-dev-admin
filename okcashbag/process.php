@@ -91,7 +91,12 @@ Switch($_POST['refpage']) {
 		$e_hour = ret(INPUT_POST, 'e_hour');
 		$e_min = ret(INPUT_POST, 'e_min');
 		$end_date = $edate." ".$e_hour.":".$e_min.":00";
-
+        if(empty($sdate)){
+            $start_date = date("Y-m-d H:i:s");
+        }
+        if(empty($edate)){
+            $end_date = date("Y-m-d H:i:s");
+        }
 		$url = htmlspecialchars($_REQUEST['url']);
 
 		if($_POST['refpage'] =='/okcashbag/board_noti_write.php'){
@@ -104,7 +109,7 @@ Switch($_POST['refpage']) {
 		$display_yn = empty(ret(INPUT_POST, 'display_yn'))? "N":ret(INPUT_POST, 'display_yn');
 		$default_yn = empty(ret(INPUT_POST, 'default_yn'))? "N":ret(INPUT_POST, 'default_yn');
 
-		$contents = htmlspecialchars($_REQUEST['contents']);
+		$contents = @htmlspecialchars($_REQUEST['contents']);
 
 		$serv_path = __root__."/img/{$type}";
 		$type_path = "/img/{$type}";
