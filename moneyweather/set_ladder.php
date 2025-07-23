@@ -39,9 +39,13 @@ if(!empty($_POST)){
             if (empty($value)) {
                 continue;
             }
-            $sum_value = bcadd($sum_value, $value, 16); // 정밀도 16자리로 덧셈
+            //$sum_value = bcadd($sum_value, $value, 16); // 정밀도 16자리로 덧셈
+            $sum_value += (float)$value; // 일반 float 덧셈 사용
         }
-        if (bccomp($sum_value, "1", 16) !== 0) {
+//        if (bccomp($sum_value, "1", 16) !== 0) {
+//            exit("error1");
+//        }
+        if (abs($sum_value - 1.0) > 0.00001) { // 부동 소수점 비교를 위한 허용 오차 사용
             exit("error1");
         }
 		$odds_set_point = serialize($_POST['odds_set_point']);
