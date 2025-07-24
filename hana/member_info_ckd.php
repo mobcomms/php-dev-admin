@@ -29,7 +29,7 @@ $now = ret(INPUT_GET, 'np');
 $paging->np = $now;
 $paging->ps = 30;
 $PG = $paging->init($total['cnt']);
-$PG_Param = "&uuid=".$_GET['uuid'];
+$PG_Param = "&uuid=".urlencode($_GET['uuid']);
 
 $sql = "
 	SELECT *

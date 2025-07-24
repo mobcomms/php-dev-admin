@@ -129,7 +129,7 @@ $old_user_limit = $result[1]['cfg_val'];
 						</thead>
 						<tbody>
 						<?php if(empty($ret)){ ?>
-							<tr><td colspan="6">검색 결과가 없습니다.</td></tr>
+							<tr><td colspan="8">검색 결과가 없습니다.</td></tr>
 						<?php }else { foreach($ret AS $row){?>
 							<tr>
 								<td><?=$row['user_uuid']?></td>
