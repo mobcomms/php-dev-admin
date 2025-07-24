@@ -164,7 +164,7 @@ include __head__; ## html 헤더 출력
 											<input type="file" name="brand_img" onchange="checkFile(this)" accept="image/*">
 										</span>
 										<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-										<?php if(!empty($img_info) && file_exists($img_info['brand_img']['root_path']) === true) { ?>
+										<?php if(!empty($img_info) && @file_exists($img_info['brand_img']['root_path']) === true) { ?>
 											<button type="button" class="btn btn-default" onclick="download_theme('<?=$img_info['brand_img']['idx']?>')">다운로드</button>
 										<?php } ?>
 									</div>
