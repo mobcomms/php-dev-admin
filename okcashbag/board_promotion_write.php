@@ -52,7 +52,6 @@ include __head__; ## html 헤더 출력
 				<input type="hidden" name="idx" value="<?=$idx?>" />
 				<input type="hidden" name="mode" value="write" />
 				<input type="hidden" name="type" value="promotion" />
-				<input type="hidden" name="page" value="<?=$page?>" />
 				<div class="row">
 					<div class="panel panel-default">
 
