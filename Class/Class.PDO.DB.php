@@ -211,7 +211,7 @@ Class NDO extends PDO
 $_DevClient = "221.150.126.74";  // 개발 클라이언트
 
 $_TestServer = array("localhost",'127.0.0.1','127.0.0.2','127.0.0.3'); // 테스트서버 아이피
-$_DevServer = array("192.168.102.100"); // 개발서버 아이피
+$_DevServer = array("211.62.59.181"); // 개발서버 아이피
 $_ProductionServer = array("192.168.102.100"); // 실서버 아이피
 $_ServerAddr = $_SERVER['SERVER_ADDR'];
 //pre($_ServerAddr);
