@@ -80,10 +80,10 @@ switch($os_type){
 	case "1" :
 		$sql.="
 		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
-		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7  + IFNULL(NSTATS1.click_num, 0)*7 AS mw_exhs1
+		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7 + IFNULL(NSTATS1.click_num, 0)*7 AS mw_exhs1
 
-		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs2
+		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 AS mw_exhs2
 
 		,IFNULL(CDS3.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.click_num, 0)*7 + IFNULL(CDS33.click_num, 0)*7 AS mw_exhs3
@@ -126,8 +126,8 @@ switch($os_type){
 		,0 AS mw_click3
 		,0 AS mw_exhs3
 		
-		,IFNULL(CDS4.click_num, 0) + IFNULL(CDS34.click_num, 0) AS mw_click4
-		,IFNULL(CDS4.click_num, 0)*7 + IFNULL(CDS34.click_num, 0)*7 AS mw_exhs4
+		,IFNULL(CDS4.click_num, 0) + IFNULL(CDS34.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click4
+		,IFNULL(CDS4.click_num, 0)*7 + IFNULL(CDS34.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs4
 
 		,IFNULL(CDS5.click_num, 0) + IFNULL(CDS35.click_num, 0) AS mw_click5
 		,IFNULL(CDS5.click_num, 0)*7 + IFNULL(CDS35.click_num, 0)*7 AS mw_exhs5
@@ -159,14 +159,14 @@ switch($os_type){
 		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
 		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7 + IFNULL(NSTATS1.click_num, 0)*7 AS mw_exhs1
 
-		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs2
+		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 AS mw_exhs2
 
 		,IFNULL(CDS3.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.click_num, 0)*7 + IFNULL(CDS33.click_num, 0)*7 AS mw_exhs3
 		
-		,IFNULL(CDS4.click_num, 0) + IFNULL(CDS34.click_num, 0) AS mw_click4
-		,IFNULL(CDS4.click_num, 0)*7 + IFNULL(CDS34.click_num, 0)*7 AS mw_exhs4
+		,IFNULL(CDS4.click_num, 0) + IFNULL(CDS34.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click4
+		,IFNULL(CDS4.click_num, 0)*7 + IFNULL(CDS34.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs4
 
 		,IFNULL(CDS5.click_num, 0) + IFNULL(CDS35.click_num, 0) AS mw_click5
 		,IFNULL(CDS5.click_num, 0)*7 + IFNULL(CDS35.click_num, 0)*7 AS mw_exhs5
@@ -249,8 +249,8 @@ $sql.="
 	LEFT JOIN ckd_day_coupang_stats CSTATS5 ON CSTATS5.stats_dttm = CDMS.stats_dttm AND CSTATS5.service_tp_code='05'
 	LEFT JOIN ckd_day_coupang_stats CSTATS6 ON CSTATS6.stats_dttm = CDMS.stats_dttm AND CSTATS6.service_tp_code='06'
 
-    LEFT JOIN hana.ckd_day_nas_stats NSTATS1 ON NSTATS1.stats_dttm = CDMS.stats_dttm AND NSTATS1.service_tp_code='paybooc_ladder_aos'
-    LEFT JOIN hana.ckd_day_nas_stats NSTATS2 ON NSTATS2.stats_dttm = CDMS.stats_dttm AND NSTATS2.service_tp_code='paybooc_moneybox_aos'
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS1 ON NSTATS1.stats_dttm = CDMS.stats_dttm AND NSTATS1.service_tp_code='paybooc_moneybox_aos'
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS2 ON NSTATS2.stats_dttm = CDMS.stats_dttm AND NSTATS2.service_tp_code='paybooc_moneybox_ios'
 
 	WHERE CDMS.stats_dttm BETWEEN {$sdate} AND {$edate}
 	GROUP BY CDMS.stats_dttm
