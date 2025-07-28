@@ -109,11 +109,11 @@ $sql="
 switch($os_type){
 	case "1" :
 		$sql .= "
-		,IFNULL(CDS11.click_num, 0) + IFNULL(CDS31.click_num, 0) AS mw_click1
-		,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS21.exhs_amt, 0) AS mw_exhs1
+		,IFNULL(CDS11.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
+		,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS21.exhs_amt, 0) + IFNULL(NSTATS1.exhs_amt, 0) AS mw_exhs1
 
-		,IFNULL(CDS12.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.exhs_amt, 0) + IFNULL(CDS22.exhs_amt, 0) AS mw_exhs2
+		,IFNULL(CDS12.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.exhs_amt, 0) + IFNULL(CDS22.exhs_amt, 0) + IFNULL(NSTATS2.exhs_amt, 0) AS mw_exhs2
 
 		,IFNULL(CDS13.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS23.exhs_amt, 0) AS mw_exhs3
@@ -128,8 +128,8 @@ switch($os_type){
 		,0 AS mw_exhs6
 
 		,IFNULL(CSTATS3.click_num, 0) AS coupang_click_num1
-		,IFNULL(CSTATS1.order_commission, 0) AS coupang_order1
-		,IFNULL(CSTATS1.cancel_commission, 0) AS coupang_cancel1
+		,IFNULL(CSTATS1.order_commission, 0) + IFNULL(CSTATS5.order_commission, 0) AS coupang_order1
+		,IFNULL(CSTATS1.cancel_commission, 0) + IFNULL(CSTATS5.cancel_commission, 0) AS coupang_cancel1
 
 		,0 AS coupang_click_num2
 		,0 AS coupang_order2
@@ -161,18 +161,18 @@ switch($os_type){
 		,0 AS coupang_cancel1
 
 		,IFNULL(CSTATS4.click_num, 0) AS coupang_click_num2
-		,IFNULL(CSTATS2.order_commission, 0) AS coupang_order2
-		,IFNULL(CSTATS2.cancel_commission, 0) AS coupang_cancel2
+		,IFNULL(CSTATS2.order_commission, 0) + IFNULL(CSTATS6.order_commission, 0) AS coupang_order2
+		,IFNULL(CSTATS2.cancel_commission, 0) + IFNULL(CSTATS6.cancel_commission, 0) AS coupang_cancel2
 
 ";
 	break;
 	default :
 		$sql .= "
-		,IFNULL(CDS11.click_num, 0) + IFNULL(CDS31.click_num, 0) AS mw_click1
-		,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS21.exhs_amt, 0) AS mw_exhs1
+		,IFNULL(CDS11.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
+		,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS21.exhs_amt, 0) + IFNULL(NSTATS1.exhs_amt, 0) AS mw_exhs1
 
-		,IFNULL(CDS12.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.exhs_amt, 0) + IFNULL(CDS22.exhs_amt, 0) AS mw_exhs2
+		,IFNULL(CDS12.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.exhs_amt, 0) + IFNULL(CDS22.exhs_amt, 0) + IFNULL(NSTATS2.exhs_amt, 0) AS mw_exhs2
 
 		,IFNULL(CDS13.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS23.exhs_amt, 0) AS mw_exhs3
@@ -187,12 +187,12 @@ switch($os_type){
 		,IFNULL(CDS6.exhs_amt, 0) + IFNULL(CDS26.exhs_amt, 0) AS mw_exhs6
 
 		,IFNULL(CSTATS3.click_num, 0) AS coupang_click_num1
-		,IFNULL(CSTATS1.order_commission, 0) AS coupang_order1
-		,IFNULL(CSTATS1.cancel_commission, 0) AS coupang_cancel1
+		,IFNULL(CSTATS1.order_commission, 0) + IFNULL(CSTATS5.order_commission, 0) AS coupang_order1
+		,IFNULL(CSTATS1.cancel_commission, 0) + IFNULL(CSTATS5.cancel_commission, 0) AS coupang_cancel1
 
 		,IFNULL(CSTATS4.click_num, 0) AS coupang_click_num2
-		,IFNULL(CSTATS2.order_commission, 0) AS coupang_order2
-		,IFNULL(CSTATS2.cancel_commission, 0) AS coupang_cancel2
+		,IFNULL(CSTATS2.order_commission, 0) + IFNULL(CSTATS6.order_commission, 0) AS coupang_order2
+		,IFNULL(CSTATS2.cancel_commission, 0) + IFNULL(CSTATS6.cancel_commission, 0) AS coupang_cancel2
 ";
 	break;
 
@@ -249,7 +249,13 @@ $sql.="
 
 	LEFT JOIN ckd_day_coupang_stats CSTATS3 ON CSTATS3.stats_dttm = CDMS.stats_dttm AND CSTATS3.service_tp_code='03'
 	LEFT JOIN ckd_day_coupang_stats CSTATS4 ON CSTATS4.stats_dttm = CDMS.stats_dttm AND CSTATS4.service_tp_code='04'
+
+	LEFT JOIN ckd_day_coupang_stats CSTATS5 ON CSTATS5.stats_dttm = CDMS.stats_dttm AND CSTATS5.service_tp_code='05'
+	LEFT JOIN ckd_day_coupang_stats CSTATS6 ON CSTATS6.stats_dttm = CDMS.stats_dttm AND CSTATS6.service_tp_code='06'
 	
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS1 ON NSTATS1.stats_dttm = CDMS.stats_dttm AND NSTATS1.service_tp_code='paybooc_ladder_aos'
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS2 ON NSTATS2.stats_dttm = CDMS.stats_dttm AND NSTATS2.service_tp_code='paybooc_moneybox_aos'
+
 	WHERE CDMS.stats_dttm BETWEEN {$sdate} AND {$edate}
 	GROUP BY CDMS.stats_dttm
 	ORDER BY CDMS.stats_dttm DESC
@@ -259,7 +265,7 @@ $ret = $NDO->fetch_array($sql);
 //pre($ret);
 
 function date_color_code($day){
-	$yoil = array("#fff3f3","","","","","","#f1fcff");
+	$yoil = array('#fff3f3',"","","","","",'#f1fcff');
 	return ($yoil[date('w', strtotime($day))]);
 }
 
@@ -299,10 +305,6 @@ foreach($ret as $key => $row){
 
 	$offerwall_exhs_amt=round($row['offerwall_exhs_amt']);
 	$row['offerwall_exhs_amt']=round($row['offerwall_exhs_amt'] * $offerwall_commission);
-
-	//모비위드 CTR
-	//$mw_ctr_main = ($row['mw_eprs_main'] > 0) ? number_format($row['mw_click_main'] / $row['mw_eprs_main'] * 100, 1) : 0;
-	//$mw_ctr_set = ($row['mw_eprs_set'] > 0) ? number_format($row['mw_click_set'] / $row['mw_eprs_set'] * 100, 1) : 0;
 
 	//모비위드
 	$mw_commission = $commission;
@@ -371,7 +373,7 @@ foreach($ret as $key => $row){
 
 		$M_TOTAL[$month]['coupang_click_num1'] += $row['coupang_click_num1'];
 		$M_TOTAL[$month]['coupang_income1'] += round($coupang_income1);
-		$M_TOTAL[$month]['coupang_click_num1'] += $row['coupang_click_num2'];
+		$M_TOTAL[$month]['coupang_click_num2'] += $row['coupang_click_num2'];
 		$M_TOTAL[$month]['coupang_income2'] += round($coupang_income2);
 
 		$M_TOTAL[$month]['offerwall_participation'] += $row['offerwall_participation'];
@@ -848,17 +850,16 @@ $("#ExcelDown").click(function(){
 });
 
 // 화면 중앙에 새창 열기
-function centerOpenWindow(theURL, winName, width, height, fstate, scrollbars) {
+function centerOpenWindow(theURL, winName, width, height, state, scrollbars) {
 	var features = "width=" + width ;
 	features += ",height=" + height ;
-	var state = "";
 
 	var scrollbars = scrollbars || "no";
 
-	if (fstate == "") {		// 옵션
+	if (state == "") {		// 옵션
 		state = features + ", left=" + (screen.width-width)/2 + ",top=" + (screen.height-height)/2 + ",scrollbars="+ scrollbars;
 	} else {
-		state = fstate + ", " + features + ", left=" + (screen.width-width)/2 + ",top=" + (screen.height-height)/2 + ",scrollbars="+ scrollbars;
+		state = state + ", " + features + ", left=" + (screen.width-width)/2 + ",top=" + (screen.height-height)/2 + ",scrollbars="+ scrollbars;
 	}
 	var win = window.open(theURL,winName,state);
 	win.focus();

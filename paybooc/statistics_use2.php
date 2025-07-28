@@ -79,11 +79,11 @@ $sql="
 switch($os_type){
 	case "1" :
 		$sql.="
-		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) AS mw_click1
-		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7 AS mw_exhs1
+		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
+		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7  + IFNULL(NSTATS1.click_num, 0)*7 AS mw_exhs1
 
-		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 AS mw_exhs2
+		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs2
 
 		,IFNULL(CDS3.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.click_num, 0)*7 + IFNULL(CDS33.click_num, 0)*7 AS mw_exhs3
@@ -105,7 +105,7 @@ switch($os_type){
 		,0 AS coupang_order2
 		,0 AS coupang_cancel2
 
-		,IFNULL(CSTATS3.order_commission, 0) + IFNULL(CSTATS3.cancel_commission, 0) AS coupang_order11
+		,IFNULL(CSTATS3.order_commission, 0) + IFNULL(CSTATS3.cancel_commission, 0) + IFNULL(CSTATS5.order_commission, 0) + IFNULL(CSTATS5.cancel_commission, 0) AS coupang_order11
 		,0 AS coupang_order12
 		
     	,IFNULL(CDS50.eprs_num, 0) AS covi_eprs1
@@ -144,7 +144,7 @@ switch($os_type){
 		,0 AS coupang_cancel2
 
 		,0 AS coupang_order11
-		,IFNULL(CSTATS4.order_commission, 0) + IFNULL(CSTATS4.cancel_commission, 0) AS coupang_order12
+		,IFNULL(CSTATS4.order_commission, 0) + IFNULL(CSTATS4.cancel_commission, 0) + IFNULL(CSTATS6.order_commission, 0) + IFNULL(CSTATS6.cancel_commission, 0) AS coupang_order12
 
     	,0 AS covi_eprs1
         ,0 AS covi_exhs1
@@ -156,11 +156,11 @@ switch($os_type){
 
 	default :
 	$sql.="
-		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) AS mw_click1
-		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7 AS mw_exhs1
+		,IFNULL(CDS1.click_num, 0) + IFNULL(CDS31.click_num, 0) + IFNULL(NSTATS1.click_num, 0) AS mw_click1
+		,IFNULL(CDS1.click_num, 0)*7 + IFNULL(CDS31.click_num, 0)*7 + IFNULL(NSTATS1.click_num, 0)*7 AS mw_exhs1
 
-		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) AS mw_click2
-		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 AS mw_exhs2
+		,IFNULL(CDS2.click_num, 0) + IFNULL(CDS32.click_num, 0) + IFNULL(NSTATS2.click_num, 0) AS mw_click2
+		,IFNULL(CDS2.click_num, 0)*7 + IFNULL(CDS32.click_num, 0)*7 + IFNULL(NSTATS2.click_num, 0)*7 AS mw_exhs2
 
 		,IFNULL(CDS3.click_num, 0) + IFNULL(CDS33.click_num, 0) AS mw_click3
 		,IFNULL(CDS3.click_num, 0)*7 + IFNULL(CDS33.click_num, 0)*7 AS mw_exhs3
@@ -182,8 +182,8 @@ switch($os_type){
 		,IFNULL(CSTATS2.click_num, 0) * 3.5 AS coupang_order2
 		,0 AS coupang_cancel2
 
-		,IFNULL(CSTATS3.order_commission, 0) + IFNULL(CSTATS3.cancel_commission, 0) AS coupang_order11
-		,IFNULL(CSTATS4.order_commission, 0) + IFNULL(CSTATS4.cancel_commission, 0) AS coupang_order12
+		,IFNULL(CSTATS3.order_commission, 0) + IFNULL(CSTATS3.cancel_commission, 0) + IFNULL(CSTATS5.order_commission, 0) + IFNULL(CSTATS5.cancel_commission, 0) AS coupang_order11
+		,IFNULL(CSTATS4.order_commission, 0) + IFNULL(CSTATS4.cancel_commission, 0) + IFNULL(CSTATS6.order_commission, 0) + IFNULL(CSTATS6.cancel_commission, 0) AS coupang_order12
 
     	,IFNULL(CDS50.eprs_num, 0) AS covi_eprs1
         ,IFNULL(CDS50.exhs_amt, 0) AS covi_exhs1
@@ -245,6 +245,12 @@ $sql.="
 
 	LEFT JOIN ckd_day_coupang_stats CSTATS3 ON CSTATS3.stats_dttm = CDMS.stats_dttm AND CSTATS3.service_tp_code='01'
 	LEFT JOIN ckd_day_coupang_stats CSTATS4 ON CSTATS4.stats_dttm = CDMS.stats_dttm AND CSTATS4.service_tp_code='02'
+
+	LEFT JOIN ckd_day_coupang_stats CSTATS5 ON CSTATS5.stats_dttm = CDMS.stats_dttm AND CSTATS5.service_tp_code='05'
+	LEFT JOIN ckd_day_coupang_stats CSTATS6 ON CSTATS6.stats_dttm = CDMS.stats_dttm AND CSTATS6.service_tp_code='06'
+
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS1 ON NSTATS1.stats_dttm = CDMS.stats_dttm AND NSTATS1.service_tp_code='paybooc_ladder_aos'
+    LEFT JOIN hana.ckd_day_nas_stats NSTATS2 ON NSTATS2.stats_dttm = CDMS.stats_dttm AND NSTATS2.service_tp_code='paybooc_moneybox_aos'
 
 	WHERE CDMS.stats_dttm BETWEEN {$sdate} AND {$edate}
 	GROUP BY CDMS.stats_dttm
