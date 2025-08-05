@@ -80,8 +80,8 @@ SELECT
 switch($os_type){
 	case "1" :
 $sql .= "
-	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) AS mw_click1
-	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) AS mw_exhs1
+	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) + IFNULL(NCSTATS1.click_num, 0) AS mw_click1
+	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) + IFNULL(NCSTATS1.exhs_amt, 0) AS mw_exhs1
 
 	,0 AS mw_click2
 	,0 AS mw_exhs2
@@ -100,8 +100,8 @@ $sql .= "
 	,0 AS mw_click1
 	,0 AS mw_exhs1
 
-	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) AS mw_click2
-	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) AS mw_exhs2
+	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) + IFNULL(NCSTATS2.click_num, 0) AS mw_click2
+	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) + IFNULL(NCSTATS2.exhs_amt, 0) AS mw_exhs2
 
 	,0 AS coupang_click_num1
 	,0 AS coupang_order1
@@ -115,11 +115,11 @@ $sql .= "
 	break;
 	default :
 $sql .= "
-	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) AS mw_click1
-	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) AS mw_exhs1
+	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) + IFNULL(NCSTATS1.click_num, 0) AS mw_click1
+	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) + IFNULL(NCSTATS1.exhs_amt, 0) AS mw_exhs1
 
-	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) AS mw_click2
-	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) AS mw_exhs2
+	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) + IFNULL(NCSTATS2.click_num, 0) AS mw_click2
+	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) + IFNULL(NCSTATS2.exhs_amt, 0) AS mw_exhs2
 
 	,IFNULL(CSTATS5.click_num, 0) + IFNULL(CSTATS6.click_num, 0) AS coupang_click_num1
 	,IFNULL(CSTATS1.order_commission, 0) + IFNULL(CSTATS2.order_commission, 0) AS coupang_order1
@@ -160,6 +160,11 @@ FROM ckd_day_app_stats CDMS
 	LEFT JOIN ckd_day_coupang_stats CSTATS6 ON CSTATS6.stats_dttm = CDMS.stats_dttm AND CSTATS6.service_tp_code='06'
 	LEFT JOIN ckd_day_coupang_stats CSTATS7 ON CSTATS7.stats_dttm = CDMS.stats_dttm AND CSTATS7.service_tp_code='07'
 	LEFT JOIN ckd_day_coupang_stats CSTATS8 ON CSTATS8.stats_dttm = CDMS.stats_dttm AND CSTATS8.service_tp_code='08'
+
+	LEFT JOIN hana.ckd_day_nas_stats NCSTATS1 ON NCSTATS1.stats_dttm = CDMS.stats_dttm AND NCSTATS1.service_tp_code='finnq_moneybox_aos'
+	LEFT JOIN hana.ckd_day_nas_stats NCSTATS2 ON NCSTATS2.stats_dttm = CDMS.stats_dttm AND NCSTATS2.service_tp_code='finnq_moneybox_ios'
+
+
 WHERE CDMS.stats_dttm BETWEEN {$sdate} AND {$edate}
 GROUP BY CDMS.stats_dttm
 ORDER BY CDMS.stats_dttm DESC
@@ -181,12 +186,15 @@ $make_array2 = array("coupang_click_num1","coupang_click_num2","coupang_income1"
 $make_array3 = array("news_eprs_num","news_click_num","news_exhs_amt","noti_click_num","mobfeed_noti","reward_mobon_eprs_num","reward_mobon_click_num","reward_mobon","reward_mobon_ori");
 $make_array4 = array("reward_coupang_click_num","reward_coupang_income","reward_coupang_ori");
 $make_array5 = array("reward_news_eprs_num","reward_news_click_num","reward_news_income","mobimixer_eprs_num","mobimixer_click_num","mobimixer_income","criteo_eprs_num","criteo_click_num","criteo_income","offerwall_participation","offerwall_click_num","offerwall_exhs_amt");
-$make_array6 = array("mw_eprs1","mw_click1","mw_exhs1","mw_eprs2","mw_click2","mw_exhs2","offerwall_exhs_amt_ori","mw_eprs_sdk","mw_click_sdk","mw_exhs_sdk","mw_ctr_sdk");
+$make_array6 = array("mw_eprs1","mw_click1","mw_exhs1","mw_eprs2","mw_click2","mw_exhs2","offerwall_exhs_amt_ori","mw_eprs_sdk","mw_click_sdk","mw_exhs_sdk","mw_ctr_sdk","total_settlement_all");
 
 $make_array = array_merge ($make_array1, $make_array2, $make_array3, $make_array4, $make_array5, $make_array6);
 foreach($make_array as $item){
 	$TOTAL[$item] = 0;
 }
+
+$total_sales_all = 0;
+$total_settlement_all = 0;
 
 foreach($ret as $key => $row){
 
@@ -200,8 +208,8 @@ foreach($ret as $key => $row){
 
 	# 커미션 100 으로 보여줌
 	//쿠팡 수익 계산 (주문 커미션 - 취소 커미션 ) * 0.8
-	$coupang_income1 = ($row['coupang_order1'] + $row['coupang_cancel1']) * $commission ;
-	$coupang_income2 = ($row['coupang_order2'] + $row['coupang_cancel2']) * $commission ;
+	$coupang_income1 = round(($row['coupang_order1'] + $row['coupang_cancel1']) * $commission);
+	$coupang_income2 = round(($row['coupang_order2'] + $row['coupang_cancel2']) * $commission) ;
 
 	$offerwall_commission = $commission;
 
@@ -231,6 +239,11 @@ foreach($ret as $key => $row){
 	$TOTAL['offerwall_click_num'] += $row['offerwall_click_num'];
 	$TOTAL['offerwall_exhs_amt'] += round($row['offerwall_exhs_amt']);
 	$TOTAL['offerwall_exhs_amt_ori'] += round($offerwall_exhs_amt);
+    $TOTAL['mw_exhs1']+$TOTAL['mw_exhs2']+$TOTAL['coupang_income1']+$TOTAL['coupang_income2']+$TOTAL['offerwall_exhs_amt'];
+
+    // 개별 반올림 후 합산
+    $total_sales = $row['mw_exhs1']+$row['mw_exhs2']+$coupang_income1+$coupang_income2+$row['offerwall_exhs_amt'];
+    $total_settlement_all += round($total_sales * 0.7);
 
 	if($type=="3M" || $type=="6M"){
 		//합계
@@ -258,11 +271,14 @@ foreach($ret as $key => $row){
 		$M_TOTAL[$month]['offerwall_exhs_amt'] += round($row['offerwall_exhs_amt']);
 		$M_TOTAL[$month]['offerwall_exhs_amt_ori'] += round($offerwall_exhs_amt);
 
+        // 개별 반올림 후 합산
+        $total_sales = $row['mw_exhs1']+$row['mw_exhs2']+$coupang_income1+$coupang_income2+$row['offerwall_exhs_amt'];
+        $M_TOTAL[$month]['total_settlement_all'] += round($total_sales * 0.7);
+
 	}
 
-	$total_sales = $row['mw_exhs1']+$row['mw_exhs2']+$coupang_income1+$coupang_income2+$row['offerwall_exhs_amt'];
-	$total_settlement = $total_sales * 0.7;
-	$total_profit = $total_sales * 0.3;
+	$total_settlement = round($total_sales * 0.7);
+	$total_profit = $total_sales - $total_settlement;
 
 	$use_cnt = empty($row['use_cnt'])?0:number_format($row['use_cnt']);
 
@@ -313,8 +329,7 @@ if(empty($html)){
 
 //총수익
 $total_sales_all = $TOTAL['mw_exhs1']+$TOTAL['mw_exhs2']+$TOTAL['coupang_income1']+$TOTAL['coupang_income2']+$TOTAL['offerwall_exhs_amt'];
-$total_settlement_all = $total_sales_all * 0.7;
-$total_profit_all = $total_sales_all * 0.3;
+$total_profit_all = $total_sales_all - $total_settlement_all;
 
 ?>
 <style>
@@ -531,8 +546,8 @@ $total_profit_all = $total_sales_all * 0.3;
 							$this_month_day_cnt = date('t',strtotime($date));
 
 							$month_total_sales = $row['mw_exhs1']+$row['mw_exhs2']+$row['coupang_income1']+$row['coupang_income2']+$row['offerwall_exhs_amt'];
-							$month_total_settlement = $month_total_sales * 0.7;
-							$month_total_profit = $month_total_sales * 0.3;
+							$month_total_settlement = $row['total_settlement_all'];
+							$month_total_profit = $month_total_sales - $month_total_settlement;
 
 							?>
 						<tr class="" style="background-color: #afe076;">
@@ -669,7 +684,7 @@ $total_profit_all = $total_sales_all * 0.3;
 		}
 	}
 $("#ExcelDown").click(function(){
-	fnExcelReport('ocb','집계방식1');
+	fnExcelReport('ocb','핀크매출통계');
 });
 
 // 화면 중앙에 새창 열기
