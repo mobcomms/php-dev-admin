@@ -240,9 +240,9 @@ $query_string = http_build_query(compact('type','search_type', 'keyword', 'np','
 										<td><?=$res['bbs_state']=='01'?"미답변":"답변완료";?></td>
 										<td>
 											<?php if(empty($target)){ ?>
-												<button style="margin-bottom: 3px;" class="btn btn-xs btn-primary" onclick="location.href='board_inquiry_write.php?seq=<?=$res['seq']?>&<?=$query_string?>'">수정</button>
+												<button class="btn btn-xs btn-primary" onclick="location.href='board_inquiry_write.php?seq=<?=$res['seq']?>&<?=$query_string?>'">수정</button>
 											<?php }else{ ?>
-												<button style="margin-bottom: 3px;" class="btn btn-xs btn-primary" onclick="location.href='board_inquiry_write2.php?seq=<?=$res['seq']?>&<?=$query_string?>'">수정</button>
+												<button class="btn btn-xs btn-primary" onclick="location.href='board_inquiry_write2.php?seq=<?=$res['seq']?>&<?=$query_string?>'">수정</button>
 											<?php } ?>
 											<button class="btn btn-xs btn-danger" onclick="inquiry_delete(<?=$res['seq']?>)">삭제</button>
 										</td>
