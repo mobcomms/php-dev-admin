@@ -24,6 +24,7 @@ switch($target){
 	case "SDK" : define('_subMenu_', 'inquiry_sdk');break;
 	case "PPZ" : define('_subMenu_', 'inquiry_ppz');break;
     case "HOTPLACE" : define('_subMenu_', 'inquiry_hotplace');break;
+    case "LOTTO" : define('_subMenu_', 'inquiry_LOTTO');break;
 	default : define('_subMenu_', 'inquiry');
 }
 
