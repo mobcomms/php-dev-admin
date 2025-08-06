@@ -60,7 +60,8 @@
 					<li class=" <?=_subMenu_=='inquiry_sdk'?'active':''?>"><a href="board_inquiry.php?target=SDK"><i class="fa fa-caret-right"></i>머니사다리 문의하기</a></li>
 					<li class=" <?=_subMenu_=='inquiry_ppz'?'active':''?>"><a href="board_inquiry.php?target=PPZ"><i class="fa fa-caret-right"></i>오퍼월 문의하기</a></li>
                     <li class=" <?=_subMenu_=='inquiry_hotplace'?'active':''?>"><a href="board_inquiry.php?target=HOTPLACE"><i class="fa fa-caret-right"></i>핫플레이스 문의하기</a></li>
-                                        
+                    <li class=" <?=_subMenu_=='inquiry_LOTTO'?'active':''?>"><a href="board_inquiry.php?target=LOTTO"><i class="fa fa-caret-right"></i>로또 문의하기</a></li>
+
 				</ul>
 			</li>
 

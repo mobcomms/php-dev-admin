@@ -20,6 +20,7 @@ switch($target){
 	case "SDK" : define('_subMenu_', 'inquiry_sdk');$subQry .= " AND title = 'SDK'";break;
 	case "PPZ" : define('_subMenu_', 'inquiry_ppz');$subQry .= " AND title = 'PPZ'";break;
     case "HOTPLACE" : define('_subMenu_', 'inquiry_hotplace');$subQry .= " AND title = 'HOTPLACE'";break;
+    case "LOTTO" : define('_subMenu_', 'inquiry_LOTTO');$subQry .= " AND title = 'LOTTO'";break;
 	default : define('_subMenu_', 'inquiry');$subQry .= " AND title = ''";
 }
 
