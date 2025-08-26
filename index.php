@@ -40,12 +40,14 @@
         }
 
         .card {
+            display: block; /* a 태그를 블록 요소로 */
             background: white;
             border-radius: 15px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
             padding: 20px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
+            text-decoration: none; /* 밑줄 제거 */
+            color: inherit; /* 글자색 상속 */
         }
 
         .card:hover {
@@ -58,41 +60,27 @@
             margin: 0;
             color: #4a90e2;
         }
-
-        .footer-button {
-            display: block;
-            margin: 40px auto 0;
-            padding: 12px 30px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 8px;
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .footer-button:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
 
 <h1>PHP 개발 서버 ADMIN</h1>
-<p style="font-size: 1.2rem; font-weight: 600; color: #4a90e2; margin-bottom: 10px;">안녕하세요!</p>
 <p>이동하고 싶은 매체를 클릭하세요:</p>
 
 <div class="grid">
-    <div class="card" onclick="location.href='/hana/login.php'"><h2>하나머니</h2></div>
-    <div class="card" onclick="location.href='/benepia/login.php'"><h2>베네피아</h2></div>
-    <div class="card" onclick="location.href='/happyscreen/login.php'"><h2>해피스크린</h2></div>
-    <div class="card" onclick="location.href='/moneyweather/login.php'"><h2>돈버는날씨</h2></div>
-    <div class="card" onclick="location.href='/okcashbag/login.php'"><h2>돈버는키보드 (OCB)</h2></div>
-    <div class="card" onclick="location.href='/shinhancard/login.php'"><h2>신한카드</h2></div>
-    <div class="card" onclick="location.href='/valuewalk/login.php'"><h2>가치워크</h2></div>
-    <div class="card" onclick="location.href='/finnq/login.php'"><h2>핀크</h2></div>
-    <div class="card" onclick="location.href='/paybooc/login.php'"><h2>페이북</h2></div>
+    <a href="/okcashbag/login.php" target="_blank" class="card"><h2>돈버는키보드 (OCB)</h2></a>
+    <a href="/hana/login.php" target="_blank" class="card"><h2>하나머니</h2></a>
+    <a href="/shinhancard/login.php" target="_blank" class="card"><h2>신한카드</h2></a>
+    <a href="/moneyweather/login.php" target="_blank" class="card"><h2>돈버는날씨</h2></a>
+    <a href="/benepia/login.php" target="_blank" class="card"><h2>베네피아</h2></a>
+    <a href="/happyscreen/login.php" target="_blank" class="card"><h2>해피스크린</h2></a>
+    <a href="/valuewalk/login.php" target="_blank" class="card"><h2>가치워크</h2></a>
+    <a href="/hanapay/login.php" target="_blank" class="card"><h2>하나페이(admin only)</h2></a>
+    <a href="/paybooc/login.php" target="_blank" class="card"><h2>페이북(admin only)</h2></a>
+    <a href="/finnq/login.php" target="_blank" class="card"><h2>핀크(admin only)</h2></a>
+    <a href="/hanapay/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>하나페이(문의하기)</h2></a>
+    <a href="/paybooc/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>페이북(문의하기)</h2></a>
 </div>
+
 </body>
 </html>

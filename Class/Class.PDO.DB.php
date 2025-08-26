@@ -20,7 +20,11 @@ Class NDO extends PDO
             $config['ckd_db_name'] = $parts[1]; // `hana` 부분 추출
         }else{
             $parts = explode("/", $uri); // '/' 기준으로 분리
-            $config['ckd_db_name'] = $parts[3]; // `hana` 부분 추출
+            if($parts[3] == "index.php"){
+                $config['ckd_db_name'] = $config['ckd_db_name'];
+            }else{
+                $config['ckd_db_name'] = $parts[3]; // `hana` 부분 추출
+            }
         }
         //pre($config);
 		$this->_config = $config;
