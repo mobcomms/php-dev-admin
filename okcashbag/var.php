@@ -26,7 +26,7 @@ define('__head_pop__', './lib/header_pop.php');
 define('__left_menu__', './lib/left_menu.php');
 define('__foot__', './lib/footer.php');
 define('__self__', $_SERVER['PHP_SELF']);
-define('__host__', 'okcashbag.cashkeyboard.co.kr');	## 도메인
+define('__host__', $_SERVER['SERVER_NAME']);	## 도메인
 define('__company__', 'Cash Keyboard');
 define('__page__', __root__.'/Class/Class.Page.php');
 define('__ver_js__', '?v='.date('YmdHis'));
