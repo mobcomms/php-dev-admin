@@ -23,8 +23,8 @@ $key=empty($_REQUEST['key'])?"":$_REQUEST['key'];
 $keyword=empty($_REQUEST['keyword'])?"":htmlspecialchars($_REQUEST['keyword']);
 
 // 검색어
-if($keyword && $key=='user_id'){
-	$where.=" AND (".$key." like '%".$keyword."%' or m.user_no='".$keyword."') ";
+if($keyword && $key=='user_uuid'){
+	$where.=" AND ".$key."=".$keyword;
 }else if($keyword){
 	$where.=" AND ".$key." like '%".$keyword."%' ";
 }
@@ -97,9 +97,13 @@ $ret = $NDO->fetch_array($sql);
 						</tr>
 						</thead>
 						<tbody>
-						<?php foreach($ret AS $row){
-
-
+						<?php
+                        if(empty($ret)){
+                        ?>
+                            <td colspan=4>검색된 내용이 없습니다.</td>
+                        <?php
+                        }else{
+                        foreach($ret AS $row){
 							//적립받은 포인트
 							$sql = "
 								SELECT user_uuid,sum(point) AS tot_point FROM ckd_game_zone_point
@@ -118,10 +122,10 @@ $ret = $NDO->fetch_array($sql);
 							<tr>
 								<td><?=$row['user_uuid']?></td>
 								<td><?=$row['reg_dttm']?></td>
-								<td><?=empty($user_point_data[$row['user_uuid']])?0:$user_point_data[$row['user_uuid']]?></td>
+								<td><?=empty($user_point_data[$row['user_uuid']])?0:number_format($user_point_data[$row['user_uuid']])?></td>
 								<td><a href="member_info.php?uuid=<?=urlencode($row['user_uuid'])?>" target="_blank">새탭으로 열기</a></td>
 							</tr>
-						<?php $PG->first_num--;}?>
+						<?php $PG->first_num--;}}?>
 						</tbody>
 					</table>
 					<div class="row">
