@@ -19,10 +19,12 @@ $np = empty($_REQUEST['np'])?"":$_REQUEST['np'];
 ## 환경설정
 define('_title_', '문의하기');
 define('_Menu_', 'inquiry');
-if($target=="game"){
-	define('_subMenu_', 'inquiry_game');
+if($target=="game") {
+    define('_subMenu_', 'inquiry_game');
+}else if($target=="moneybox"){
+    define('_subMenu_', 'inquiry_box');
 }else{
-	define('_subMenu_', 'inquiry');
+    define('_subMenu_', 'inquiry');
 }
 $actTitle=($seq)?"수정":"등록";
 
@@ -84,7 +86,7 @@ $img_link = empty($result['file_path'])?"":"https://shinhancard-api.commsad.com/
 $reg_user = explode("@",$result['reg_user'])[0];
 $sql="
 	SELECT count(reg_user) cnt FROM ckd_bbs_inquiry
-	WHERE del_yn = 'N' AND reg_user like '{$reg_user}%'
+	WHERE del_yn = 'N' AND reg_user like '{$reg_user}%' AND title='{$target}'
 ";
 
 $result_user= $NDO->getData($sql);

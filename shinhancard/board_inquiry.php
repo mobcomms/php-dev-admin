@@ -62,11 +62,12 @@ if($keyword){
 }
 
 if(empty($target)) {
-    $subQry .= " AND title != 'game'";
+    $subQry .= " AND title = ''";
 }else if(!empty($target)){
     $subQry .= " AND title = '{$target}'";
-	$param .= "&target=game";
+    $param .= "&target={$target}";
 }
+
 $sql="
 	SELECT count(*) AS cnt FROM ckd_bbs_inquiry
 	WHERE del_yn = 'N'
