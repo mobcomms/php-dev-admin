@@ -74,12 +74,13 @@
     <a href="/moneyweather/login.php" target="_blank" class="card"><h2>돈버는날씨</h2></a>
     <a href="/benepia/login.php" target="_blank" class="card"><h2>베네피아</h2></a>
     <a href="/happyscreen/login.php" target="_blank" class="card"><h2>해피스크린</h2></a>
-    <a href="/valuewalk/login.php" target="_blank" class="card"><h2>가치워크</h2></a>
     <a href="/hanapay/login.php" target="_blank" class="card"><h2>하나페이(admin only)</h2></a>
     <a href="/paybooc/login.php" target="_blank" class="card"><h2>페이북(admin only)</h2></a>
     <a href="/finnq/login.php" target="_blank" class="card"><h2>핀크(admin only)</h2></a>
     <a href="/hanapay/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>하나페이(문의하기)</h2></a>
     <a href="/paybooc/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>페이북(문의하기)</h2></a>
+    <a href="/finnq/inquiry/?uuid=T42VJx5DcQV-CAWfqMEd9eg@38cb91e8&target=SDK" target="_blank" class="card"><h2>핀크(문의하기)</h2></a>
+    <a href="/valuewalk/login.php" target="_blank" class="card"><h2>가치워크</h2></a>
 </div>
 
 </body>

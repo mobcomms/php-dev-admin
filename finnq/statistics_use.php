@@ -80,7 +80,7 @@ SELECT
 switch($os_type){
 	case "1" :
 $sql .= "
-	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) + IFNULL(NCSTATS1.click_num, 0) AS mw_click1
+	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) AS mw_click1
 	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) + IFNULL(NCSTATS1.exhs_amt, 0) AS mw_exhs1
 
 	,0 AS mw_click2
@@ -100,7 +100,7 @@ $sql .= "
 	,0 AS mw_click1
 	,0 AS mw_exhs1
 
-	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) + IFNULL(NCSTATS2.click_num, 0) AS mw_click2
+	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) AS mw_click2
 	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) + IFNULL(NCSTATS2.exhs_amt, 0) AS mw_exhs2
 
 	,0 AS coupang_click_num1
@@ -115,10 +115,10 @@ $sql .= "
 	break;
 	default :
 $sql .= "
-	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) + IFNULL(NCSTATS1.click_num, 0) AS mw_click1
+	,IFNULL(CDS5.click_num, 0) + IFNULL(CDS6.click_num, 0) AS mw_click1
 	,IFNULL(CDS1.exhs_amt, 0) + IFNULL(CDS2.exhs_amt, 0) + IFNULL(NCSTATS1.exhs_amt, 0) AS mw_exhs1
 
-	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) + IFNULL(NCSTATS2.click_num, 0) AS mw_click2
+	,IFNULL(CDS7.click_num, 0)+ IFNULL(CDS8.click_num, 0) AS mw_click2
 	,IFNULL(CDS3.exhs_amt, 0) + IFNULL(CDS4.exhs_amt, 0) + IFNULL(NCSTATS2.exhs_amt, 0) AS mw_exhs2
 
 	,IFNULL(CSTATS5.click_num, 0) + IFNULL(CSTATS6.click_num, 0) AS coupang_click_num1

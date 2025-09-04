@@ -180,8 +180,8 @@ $query_string = http_build_query(compact('type','search_type', 'keyword', 'np','
 
 								<div class="pull-left" style="clear: both;">
 									<select class="form-control pull-left border-input" name="search_type" style="width:120px;height: 38px;margin-right: 5px;">
+                                        <option value="02" <?=$search_type=="02"?"selected":""?>>사용자토큰</option>
 										<option value="01" <?=$search_type=="01"?"selected":""?>>문의내용</option>
-										<option value="02" <?=$search_type=="02"?"selected":""?>>사용자토큰</option>
 									</select>
 									<input type="text" class="form-control pull-left border-input" name="keyword" style="width:280px; height:38px;" placeholder="검색 하세요" value="<?=$keyword?>" autocomplete="off" />
 									<button class="btn btn-success" style="height:38px;">검 색</button>
@@ -199,12 +199,13 @@ $query_string = http_build_query(compact('type','search_type', 'keyword', 'np','
 									<th class="col-md-1" style="width: 70px;"><input style="width:15px;height:15px;accent-color: darkcyan;" type="checkbox" id="is_chk"></th>
 									<th class="col-md-1" style="width: 70px;">번호</th>
 									<th class="col-md-1" style="width: 70px;">key</th>
-									<th class="col-md-1" style="width: 280px;">ADID</th>
-									<th class="col-md-1">문의유형</th>
+									<th class="col-md-1" style="width: 275px;">ADID</th>
+                                    <th class="col-md-1" style="width: 270px;">userKey</th>
+									<th class="col-md-1" style="width: 100px;">문의유형</th>
 									<th>문의내용</th>
-									<th class="col-md-1">등록일</th>
-									<th class="col-md-1">답변일</th>
-									<th class="col-md-1">답변상태</th>
+									<th class="col-md-1" style="width: 100px;">등록일</th>
+									<th class="col-md-1" style="width: 100px;">답변일</th>
+									<th class="col-md-1" style="width: 100px;">답변상태</th>
 									<th class="col-md-1">삭제</th>
 								</tr>
 								</thead>
@@ -224,10 +225,11 @@ $query_string = http_build_query(compact('type','search_type', 'keyword', 'np','
 										}
 									?>
 									<tr>
-										<td align="center"><input style="width:15px;height:15px;accent-color: darkcyan;" type="checkbox" value="<?=$res['seq']?>" class="_checkbox"></td>
+										<td><input style="width:15px;height:15px;accent-color: darkcyan;" type="checkbox" value="<?=$res['seq']?>" class="_checkbox"></td>
 										<td><?=number_format($PG->first_num)?></td>
 										<td><?=$res['seq']?></td>
 										<td><?=$res['user_adid']?></td>
+                                        <td><?=$res['reg_user']?></td>
 										<td><?=$inquiry_type?></td>
 										<td style="text-align: left;"><?=htmlspecialchars_decode($res['question'])?></td>
 										<td><?=substr($res['regdate'],0,10)?></td>
