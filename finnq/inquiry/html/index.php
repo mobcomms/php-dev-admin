@@ -263,6 +263,7 @@ if(!empty($_POST)){
 					$(".no_data").hide();
 					var data = {
 						reg_user: '<?=$reg_user?>'
+                        ,target: '<?=$target?>'
 					}
 					$.post("./contens.php", data, function(result){
 						if(!result){

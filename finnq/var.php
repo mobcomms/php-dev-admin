@@ -1,4 +1,6 @@
 <?php
+echo "서비스 종료";
+exit;
 function ret($key, $val, $ret = false) {
 	$return = filter_input($key, $val);
 	if(empty($return))  return 0;

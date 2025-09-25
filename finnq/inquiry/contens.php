@@ -6,13 +6,16 @@ if(!empty($_POST)){
 	include_once __fn__;
 
 	$reg_user = empty($_REQUEST['reg_user'])?"":$_REQUEST['reg_user'];
+    $target = empty($_REQUEST['target'])?"":$_REQUEST['target'];
+
 	$sql = "
 		SELECT question, answer, bbs_state, regdate, editdate FROM ckd_bbs_inquiry
-		WHERE del_yn = 'N' AND reg_user=:reg_user
+		WHERE del_yn = 'N' AND reg_user=:reg_user AND title=:target
 		ORDER BY seq DESC
 	";
 	$params = [];
 	$params[':reg_user'] = $reg_user;
+    $params[':target'] = $target;
 	$result = $NDO->fetch_array($sql, $params);
 }
 
