@@ -220,11 +220,10 @@ Switch($mode) {
 		$mType=($mType=='01')?'02':'01';
 		$idx = $_REQUEST['idx'];
 
-		$serv_path = __root__."img/theme";
+		$serv_path = __root__."/img/theme";
 		$path_thumb = $serv_path.'/thumb/'.ceil($idx/100).'/';
 		$path_common = $serv_path.'/common/'.ceil($idx/100).'/';
 		$path_custom = $serv_path.'/custom/'.ceil($idx/100).'/';
-
 		if(!file_exists($path_common.'common_theme_'.$idx.'.zip') && !file_exists($path_custom.'custom_theme_'.$idx.'.zip')){
 			$mType='01';
 			$result="R";
