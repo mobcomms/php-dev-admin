@@ -327,10 +327,10 @@ Switch($_POST['refpage']) {
 			$path_offerwall = $serv_path.'/thumb_offerwall/'.ceil($tdix/100).'/';
 
 			if(file_exists($path) != true) {
-				@mkdir($path, 0755);
+				mkdir($path, 0755);
 			}
 			if(file_exists($path_offerwall) != true) {
-				@mkdir($path_offerwall, 0755);
+				mkdir($path_offerwall, 0755);
 			}
 
 			//썸네일
@@ -338,7 +338,6 @@ Switch($_POST['refpage']) {
 				if(!empty($_FILES['theme_thumb']['name'])){
 					if($_FILES['theme_thumb']['error'] == '0') {
 						$file = "theme_".$tdix.".png";
-						/*
 							if (!is_dir($path)) {
 								exit("Upload directory does not exist.");
 							}
@@ -346,7 +345,6 @@ Switch($_POST['refpage']) {
 							if (!is_writable($path)) {
 								exit("Upload directory is not writable.");
 							}
-						*/
 						if(!move_uploaded_file($_FILES['theme_thumb']['tmp_name'], $path.strtolower($file))) {
 							$text = file_err_chk($_FILES['theme_thumb']['error']);
 							exit($fn->loca("theme_write.php?idx=".$tdix, "썸네일 ".$text));

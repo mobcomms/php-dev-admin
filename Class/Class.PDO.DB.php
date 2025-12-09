@@ -7,7 +7,7 @@ Class NDO extends PDO
 	protected $_config;
 	// Database Connection
 
-	public $dbc, $dbc2;
+	public $dbc;
 
 	//function NDO(){ return true;    }
 
@@ -78,14 +78,14 @@ Class NDO extends PDO
 			";dbname=" . $this->_config['ckd_db_name'] .
 			";port=" . $this->_config['ckd_db_port'];
 		try {
-			$this->dbc2 = new PDO($dsn, $this->_config['ckd_db_user'], $this->_config['ckd_db_pass']);
-			if(empty($this->dbc2)){
+			$this->dbc = new PDO($dsn, $this->_config['ckd_db_user'], $this->_config['ckd_db_pass']);
+			if(empty($this->dbc)){
 				throw new PDOException('Database connection failed.');
 			}
-			$this->dbc2->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-			$this->dbc2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->dbc->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+			$this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			return $this->dbc2;
+			return $this->dbc;
 		} catch (PDOException $e) {
 			pre($e->getMessage());
 			exit;
@@ -114,7 +114,7 @@ Class NDO extends PDO
 	{
 		$sql = trim($sql);
 		$this->_SelectDB();
-		$selectDB = $this->dbc2;
+		$selectDB = $this->dbc;
 		$stmt = $selectDB->prepare($sql);
 		$stmt->execute($param);
 		return $stmt;
@@ -188,10 +188,10 @@ Class NDO extends PDO
 	function limit_query($sql, $param = array())
 	{
 		$sql = trim($sql);
-		if(!$this->dbc2) {
+		if(!$this->dbc) {
 			$this->_SelectDB();
 		}
-		$selectDB = $this->dbc2;
+		$selectDB = $this->dbc;
 		$stmt = $selectDB->prepare($sql);
 		foreach($param as $key=>$row){
 			if($key == ":page"){

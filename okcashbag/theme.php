@@ -270,11 +270,11 @@ $ret = $NDO->fetch_array($sql,$ocb_param);
 									}
 
 									//썸네일 URL
-									$thumb = "/img/theme/{$thumb_path}/".ceil($theme_seq/100)."/";
+									$thumb = "../img/theme/{$thumb_path}/".ceil($theme_seq/100)."/";
 
 									//실제 zip 파일 경로
 									$path = '/img/theme/common/'.ceil($theme_seq/100).'/';
-									$hpath = '/home/cashkeyboard/public_html'.$path;
+									$hpath = __root__.$path;
 									if(file_exists($hpath.'common_theme_'.$theme_seq.'.zip')){
 										$link_common="<a href='".$path."common_theme_".$theme_seq.".zip'>common_theme_{$theme_seq}.zip</a>";
 									}else{
@@ -283,7 +283,7 @@ $ret = $NDO->fetch_array($sql,$ocb_param);
 
 									//실제 zip 파일 경로
 									$path = '/img/theme/custom/'.ceil($theme_seq/100).'/';
-									$hpath = '/home/cashkeyboard/public_html'.$path;
+									$hpath = __root__.$path;
 									if(file_exists($hpath.'custom_theme_'.$theme_seq.'.zip')){
 										$link_custom="<a href='".$path."custom_theme_".$theme_seq.".zip'>custom_theme_{$theme_seq}.zip</a>";
 									}else{
