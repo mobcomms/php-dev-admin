@@ -70,18 +70,15 @@
 <div class="grid">
     <a href="/okcashbag/login.php" target="_blank" class="card"><h2>돈버는키보드 (OCB)</h2></a>
     <a href="/hana/login.php" target="_blank" class="card"><h2>하나머니</h2></a>
-    <a href="/shinhancard/login.php" target="_blank" class="card"><h2>신한카드</h2></a>
     <a href="/moneyweather/login.php" target="_blank" class="card"><h2>돈버는날씨</h2></a>
-    <a href="/benepia/login.php" target="_blank" class="card"><h2>베네피아</h2></a>
     <a href="/happyscreen/login.php" target="_blank" class="card"><h2>해피스크린</h2></a>
-    <a href="/hanapay/login.php" target="_blank" class="card"><h2>하나페이(admin only)</h2></a>
-    <a href="/paybooc/login.php" target="_blank" class="card"><h2>페이북(admin only)</h2></a>
-    <a href="/finnq/login.php" target="_blank" class="card"><h2>핀크(admin only)</h2></a>
-    <a href="/hanapay/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>하나페이(문의하기)</h2></a>
-    <a href="/paybooc/inquiry/index.php?uuid=test" target="_blank" class="card"><h2>페이북(문의하기)</h2></a>
-    <a href="/finnq/inquiry/?uuid=T42VJx5DcQV-CAWfqMEd9eg@38cb91e8&target=SDK" target="_blank" class="card"><h2>핀크(문의하기)</h2></a>
     <a href="/valuewalk/login.php" target="_blank" class="card"><h2>가치워크</h2></a>
 </div>
+
+<p>
+    PHP 어드민 종료 요청 (12/9)<br>
+    → 페이북, 하나페이, 신한카드, 핀크, 베네피아
+</p>
 
 </body>
 </html>
